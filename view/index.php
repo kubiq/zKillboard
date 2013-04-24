@@ -16,26 +16,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-global $subDomainKey, $subDomainRow;
-if ($subDomainRow) {
+global $subDomainKey, $subDomainRow, $boardCorpId;
+if ($subDomainRow && !(isset($overrideSubdomain) && $overrideSubdomain)) {
 	include( "view/overview.php" );
 	return;
 }
 
-$topIsk = Stats::getTopIsk(array("pastSeconds" => (3*86400), "limit" => 5));
-$topPods = Stats::getTopIsk(array("shipTypeID" => 670, "pastSeconds" => (3*86400), "limit" => 5));
-$topPointList = Stats::getTopPoints("killID", array("losses" => true, "pastSeconds" => (3*86400), "limit" => 5));
+$corpID = $boardCorpId;
+
+$topIsk = Stats::getTopIsk(array("pastSeconds" => (30*86400), "!corporationID" => $corpID, "limit" => 5));
+$topPods = Stats::getTopIsk(array("shipTypeID" => 670, "pastSeconds" => (30*86400), "!corporationID" => $corpID, "limit" => 5));
+$topPointList = Stats::getTopPoints("killID", array("losses" => true, "pastSeconds" => (30*86400), "!corporationID" => $corpID, "limit" => 5));
 $topPoints = Kills::getKillsDetails($topPointList);
 
-$p = array();
-$p["limit"] = 5;
-$p["pastSeconds"] = 3 * 86400;
-$p["kills"] = true;
-
 $top = array();
-$top[] = json_decode(Storage::retrieve("Top3dayChars"), true);
-$top[] = json_decode(Storage::retrieve("Top3dayCorps"), true);
-$top[] = json_decode(Storage::retrieve("Top3dayAlli"), true);
+$top[] = json_decode(Cache::get("zKBTop3dayChars"), true);
 
 $app->etag(md5(serialize($top)));
 $app->expires("+5 minutes");

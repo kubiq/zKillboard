@@ -65,7 +65,7 @@
 <hr/>
 <h4>Top Losers in the Last Hour as of {{ time }}</h4>
 
-{% set topList = topLosers %}
+{% set topLists = topLosers %}
 {% for list in topLists %}
 	{% set loopIndex = 0 %}
 	{% if (loop.index -1) is divisibleby(3) %}

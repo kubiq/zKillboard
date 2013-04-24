@@ -81,6 +81,12 @@ else if ($page == "kills") $page = min($killPages, $page);
 else if ($page == "losses") $page = min($lossPages, $page);
 $page = max(1, $page);
 
+if($pageType == "overview" && !isset($parameters["groupID"]))
+{
+    // Ignore Noobships/Shuttles/Pods in summary page.
+    $parameters["!groupID"] = array(237, 31, 29);
+}
+
 $mixed = $pageType == "overview" ? Kills::getKills($parameters) : array();
 $kills = $pageType == "kills"    ? Kills::getKills($parameters) : array();
 $losses = $pageType == "losses"  ? Kills::getKills($parameters) : array();

@@ -4,6 +4,7 @@
 <a class="brand hidden-phone" href="/">{% if KillboardName %}{{ KillboardName }}{% else %}zKillboard{% endif %}</a>
 <a class="brand hidden-tablet hidden-desktop" href="/"><i class="icon-home"></i></a>
 <ul class="nav pull-left">
+<li><a href="/dashboard/">Dashboard</a></li>
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kills</a>
 <ul class="dropdown-menu">
@@ -91,17 +92,12 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Top/Rank</a>
 <ul class="dropdown-menu">
-<li><a href="/top/lasthour/">Last Hour</a></li>
-<li><a href="/top/kills/">Top10 Kills</a></li>
-<li><a href="/top/points/">Top10 Points</a></li>
-<li><a href="/ranks/recent/killers">Ranks</a></li>
+<li><a href="/top/14day/">14 Days</a></li>
 </ul>
 </li>
-<li class="hidden-phone hidden-tablet"><a href="/post/">Post</a></li>
 <!--<li class="hidden-phone hidden-tablet"><a href="/map/">Map</a></li>-->
 </ul>
 <ul class="nav pull-right">
-<li class="hidden-phone hidden-tablet"><a href="/top/lasthour/" rel="tooltip" title="Kills added in the last hour" id="lasthour">{{ killsLastHour | number_format(0)}}</a></li>
 <li class="hidden-phone hidden-tablet"><a href="#" onclick="return false" rel="tooltip" title="Eve Time"><div id="my_clock"></div></a></li>
 <li class="hidden-phone">
 <form name="search" id="search" class="navbar-form pull-right" action="/search/" method="post">
@@ -138,7 +134,6 @@
 </ul>
 </li>
 {% else %} 
-<li class="hidden-phone"><a href="/register/">Register</a></li>
 <li class="dropdown">
 <a class="dropdown-tougle" href="/" data-toggle="dropdown">Sign In <i class="icon-caret-down"></i></a>
 <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">

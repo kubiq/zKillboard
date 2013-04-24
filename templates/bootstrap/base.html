@@ -23,7 +23,6 @@
 {% block robots %}
 {% endblock %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <title>{% block title %}zKillboard.com{% endblock %}</title>
 		<link rel="canonical" href="https://zkillboard.com{{ requesturi }}">
         <link rel="search" type="application/opensearchdescription+xml" href="//{{ siteurl }}/xml/zkbsearch.xml" title="zKillboard">
@@ -42,10 +41,6 @@
     </head>
     <body>
         {% include "navigationbar.html" %}
-
-        <div class="centered" id="adsensetop" style="height: 90px; margin-bottom: 10px;">
-            {% if eveigb %}{{ igbtopad|raw }}{% elseif isMobile and isTablet == false %}{{ mobiletopad|raw }}{% else %}{{ topad|raw }}{% endif %}
-        </div>
         <div class="container">
 			{% if sessionrevoked %}
 				<div class="alert alert-info fade in" data-dismiss="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>You have had access revoked to certain parts of the site</a><br/>Reason: {{ sessionrevokereason }}</div>
@@ -59,12 +54,6 @@
             <div id="back-top"><a href="#top"><span></span>Back to the Top</a></div>
 			{% endif %}
         </div>
-		
-		<br/>
-        <div class="centered" id="adsensebottom" style="height: 90px;">
-            {% if eveigb %}{{ igbbottomad|raw }}{% elseif isMobile and isTablet == false %}{{ mobilebottomad|raw }}{% else %}{{ bottomad|raw }}{% endif %}
-        </div>
-		
         <div class="container" id="footer">
             {% include "footer.html" %}
         </div>
@@ -77,25 +66,6 @@
         <script type="text/javascript" src="//{{ siteurl }}/js/sclock1.js"></script>
 {% if 'now'|date('m') == 12 %}
         <script type="text/javascript" src="//{{ siteurl }}/js/snowstorm.js"></script> <!-- Snowstorm yo! -->
-{% endif %}
-{% if sessionusername and isMobile == false and isTablet == false %}
-        <script type="text/javascript">
-        $(document).ready(function(){
-return;
-               jQuery.ajaxSetup({cache: true});
-               jQuery.getScript("https://static.jappix.com/php/get.php?l=en&t=js&g=mini.xml", function() {
-                  DEVELOPER = "off";
-                  var jappix_autoconnect = true;
-                  HOST_MAIN = "eve-kill.net"
-                  HOST_BOSH_MINI = "http://jabber.eve-kill.net:5280/http-bind/";
-                  MINI_GROUPCHATS = ["esc@talk.eve-kill.net"];
-                  MINI_ANIMATE = true;
-                  {% if defaultOogCommsCharacterName %}MINI_NICKNAME = "{{ defaultOogCommsCharacterName }}"{% else %}MINI_NICKNAME = "{{ sessionusername }}"{% endif %}
-
-                  launchMini(jappix_autoconnect, false, "eve-kill.net", "{{ sessionusername }}", "{{ sessionboshauth }}");
-               });
-           });
-        </script>
 {% endif %}
 {% block script %}
 {% endblock %}

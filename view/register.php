@@ -16,6 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+global $boardDisableRegister;
+
+if($boardDisableRegister)
+{
+    $app->render("404.html");
+    return;
+}
+
 if($_POST)
 {
     $username = "";

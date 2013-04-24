@@ -8,15 +8,15 @@
 <div class="row">
 <div class="span6 pull-left">
 {% set shipNameLength = 11 %}
-{% set topTitle = 'Most Valuable Kills - Last 3 Days' %}
+{% set topTitle = 'Most Valuable Kills - Last 30 Days' %}
 {% set topSet = topIsk %}
 {% include 'components/big_top_list.html' %}
 
-{% set topTitle = 'Most Valuable Pods - Last 3 Days' %}
+{% set topTitle = 'Most Valuable Pods - Last 30 Days' %}
 {% set topSet = topPods %}
 {% include 'components/big_top_list.html' %}
 
-{% set topTitle = 'Top Points Lost - Last 3 Days' %}
+{% set topTitle = 'Top Points Lost - Last 30 Days' %}
 {% set topSet = topPoints %}
 {% set showPoints = true %}
 {% include 'components/big_top_list.html' %}

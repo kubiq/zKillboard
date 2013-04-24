@@ -179,8 +179,7 @@ class Info
 						array(":corpID" => $corp["corporationID"]));
 				$corp["lastChecked"] = Db::queryField("select max(lastChecked) lastChecked from zz_api_characters where isDirector = 'T' and corporationID = :corpID", "lastChecked",
 						array(":corpID" => $corp["corporationID"]));
-			}
-			else {
+			} else {
 				$count = Db::queryField("select count(*) count from zz_api_characters where corporationID = :corpID", "count",
 						array(":corpID" => $corp["corporationID"]));
 				$percentage = $count / $corp["memberCount"];
@@ -307,7 +306,7 @@ class Info
 
 	public static function getAlliId($name)
 	{
-		if ($name == "BOGLYFT") return 1708771618; 
+		if ($name == "BOGLYFT") return 1708771618;
 		return Db::queryField("select allianceID from zz_alliances where name = :name order by memberCount desc limit 1", "allianceID",
 				array(":name" => $name), 30);
 	}

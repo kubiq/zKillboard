@@ -43,9 +43,9 @@ class cli_stompReceive implements cliCommand
 		switch($command)
 		{
 			case "register_dsub":
-				global $stompServer, $stompUser, $stompPassword, $baseAddr;
+				global $stompServer, $stompUser, $stompPassword, $baseAddr, $boardCorpId;
 				$stomp = new Stomp($stompServer, $stompUser, $stompPassword);
-				$destination = "/topic/kills";
+				$destination = "/topic/involved.corporation." . $boardCorpId;
 				$stomp->subscribe($destination, array("id" => "zkb-".$baseAddr, "persistent" => "true", "ack" => "client"));
 				Storage::store("dsubRegistered", "zkb-".$baseAddr);
 				unset($stomp);

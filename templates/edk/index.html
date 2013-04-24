@@ -14,15 +14,15 @@
 </div>
 
 <div class="row">
-{% set topTitle = 'Most Valuable Kills - Last 3 Days' %}
+{% set topTitle = 'Most Valuable Kills - Last 30 Days' %}
 {% set topSet = topIsk %}
 {% include 'components/big_top_list.html' %}
 
-{% set topTitle = 'Most Valuable Pods - Last 3 Days' %}
+{% set topTitle = 'Most Valuable Pods - Last 30 Days' %}
 {% set topSet = topPods %}
 {% include 'components/big_top_list.html' %}
 
-{% set topTitle = 'Top Points - Last 3 Days' %}
+{% set topTitle = 'Top Points - Last 30 Days' %}
 {% set topSet = topPoints %}
 {% set showPoints = true %}
 {% include 'components/big_top_list.html' %}

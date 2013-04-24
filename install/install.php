@@ -79,6 +79,8 @@ out("A secret key is needed for your cookies to be encrypted.");
 $cookiesecret = prompt("Secret key for cookies?", uniqid(time()));
 $settings["cookiesecret"] = sha1($cookiesecret);
 
+$settings["uuid"] = uniqid("zKB", true);
+
 // Get default config
 $configFile = file_get_contents("$base/config.new.php");
 
@@ -211,3 +213,4 @@ function prompt_silent($prompt = "Enter Password:") {
 	echo "\n";
 	return $password;
 }
+
