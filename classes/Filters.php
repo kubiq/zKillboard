@@ -101,9 +101,9 @@ class Filters
 			$whereClauses[] = "p.vGroupID not in (237, 29, 31)";
 		}
 
-		if (array_key_exists("corpKill", $parameters)) {
+		if (array_key_exists("corpKillsOnly", $parameters)) {
 			$tables[] = "zz_participants p";
-			$whereClauses[] = "p.corporationID != 804504419";
+			$whereClauses[] = "p.corporationID != " . $parameters['corpKillsOnly'];
 		}
 
 		if (array_key_exists("relatedTime", $parameters)) {

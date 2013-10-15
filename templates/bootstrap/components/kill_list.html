@@ -51,8 +51,8 @@
         {% set imageSize = 32 %}
         {% set field = kill.victim %}
         {% set lossDisplay = '' %}
-        {% if kill.displayAsLoss == true and key != 'system' and key != 'region' %}{% set lossDisplay = 'error' %}{% endif %}
-		<tr class="{{lossDisplay}} killListRow" onclick="window.location='/detail/{{kill.info.killID}}/'">
+        {% if kill.victim.corporationID == '804504419' %}{% set lossDisplay = 'error' %}{% endif %}
+		<tr class="{{lossDisplay}} killListRow clickAble" onclick="window.location='/detail/{{kill.info.killID}}/'">
 			<td>
 			{% if timeago == "true" %}<abbr class="timeago" title="{{ kill.info.ISO8601 }}">{{ kill.info.ISO8601}}</abbr>{% else %}{{ kill.info.killTime }}{% endif %}
 			</td>
