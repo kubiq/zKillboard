@@ -26,8 +26,8 @@ class zKillboard
 			var _gaq = _gaq || [];
 			var pluginUrl = "//www.google-analytics.com/plugins/ga/inpage_linkid.js";
 			_gaq.push(["_require", "inpage_linkid", pluginUrl]);
-			_gaq.push(["_setAccount", "UA-7631930-10"]);
-			_gaq.push(["_setDomainName", "zkillboard.com"]);
+			_gaq.push(["_setAccount", "UA-39754117-3"]);
+			_gaq.push(["_setDomainName", "jakubpistek.cz"]);
 			_gaq.push(["_trackPageview"]);
 
 			(function() {
@@ -68,7 +68,7 @@ class zKillboard
 
 		return $html;
 	}
-	
+
 	public static function mobileTop()
 	{
 		$html = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
