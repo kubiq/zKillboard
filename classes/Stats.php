@@ -121,6 +121,7 @@ class Stats
 	public static function getTopIsk($parameters = array(), $allTime = false)
 	{
 		unset($parameters["kills"]);
+		$parameters["corpKill"] = true;
 		$parameters["losses"] = true;
 		$parameters["orderBy"] = "p.total_price";
 		if (!isset($parameters["limit"])) $parameters["limit"] = 5;

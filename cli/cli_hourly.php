@@ -47,7 +47,6 @@ class cli_hourly implements cliCommand
 		Storage::store("Top30dayChars", json_encode(Info::doMakeCommon("Top Characters - Last 30 Days", "characterID", Stats::getTopPilots($p))));
 		Storage::store("TopIsk", json_encode(Stats::getTopIsk(array("pastSeconds" => (30*86400), "corpKillsOnly" => 804504419, "limit" => 5))));
 		Storage::store("TopPods", json_encode(Stats::getTopIsk(array("shipTypeID" => 670, "corpKillsOnly" => 804504419, "pastSeconds" => (30*86400), "limit" => 5))));
-
 		Storage::store("KillCount", Db::queryField("select count(*) count from zz_killmails", "count"));
 		Storage::store("ActualKillCount", Db::queryField("select count(*) count from zz_killmails where processed = 1", "count"));
 
