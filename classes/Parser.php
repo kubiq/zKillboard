@@ -840,13 +840,11 @@ class Parser
 	private static function processItem(&$year, &$week, &$kill, &$killID, &$item, $itemInsertOrder, $isCargo = false, $parentContainerFlag = -1)
 	{
 		global $itemNames;
-		if ($itemNames == null ) {
-			$itemNames = array();
-			$results = Db::query("select typeID, typeName from ccp_invTypes", array(), 3600);
-			foreach ($results as $row) {
-				$itemNames[$row["typeID"]] = $row["typeName"];
-			}
+		if (!isset($itemNames[$item->typeID])) {
+			$itemName = Db::queryField("select typeName from ccp_invTypes where typeID = :id", 'typeName', [":id" => $item->typeID], 3600);
+			$itemNames[$item->typeID] = $itemName;
 		}
+
 		$typeID = $item->typeID;
 		$itemName = $itemNames[$item->typeID];
 
