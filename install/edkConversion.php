@@ -250,7 +250,7 @@ function processItem($edkitem, $typeId, $locId, $slot, $destQty, $dropQty)
 
 	$item = array(
 		"typeID" => $typeId,
-		"flag" => 0,
+		"flag" => $locId,
 		"qtyDropped" => $dropQty,
 		"qtyDestroyed" => $destQty,
 		"singleton" => $locId == 9 ? 2 : 0,
