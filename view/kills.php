@@ -72,4 +72,14 @@ switch($type)
 	break;
 }
 
+global $boardCorpId;
+foreach($kills as $killID => $kill)
+{
+	if($kill["victim"]["corporationID"] == $boardCorpId)
+	{
+		$kill["displayAsLoss"] = true;
+		$kills[$killID] = $kill;
+	}
+}
+
 $app->render("kills.html", array("kills" => $kills, "numPages" => $killPages, "page" => $page, "pageType" => $type));

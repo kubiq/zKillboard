@@ -84,7 +84,7 @@ class cli_priceUpdate implements cliCommand
 		);
 		foreach($rareBattleships as $typeID) Db::execute("replace into zz_prices (typeID, price) values ($typeID, 750000000000)"); // 750b
 
-		$prices = file_get_contents("http://eve.no-ip.de/prices/30d/prices-all.xml");
+		$prices = file_get_contents("http://eve.no-ip.de/prices/7d/prices-all.xml");
 		$xml = new SimpleXmlElement($prices);
 		foreach($xml->result->rowset->row as $row) {
 			$typeID = $row['typeID'];

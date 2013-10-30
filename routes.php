@@ -25,6 +25,11 @@ $app->get("/", function () use ($app){
     include( "view/index.php" );
 });
 
+$app->get("/dashboard/", function () use ($app){
+    $overrideSubdomain = true;
+    include( "view/index.php" );
+});
+
 //  information about zKillboard
 $app->get("/information(/:page)/", function($page = "about") use ($app) {
     include( "view/information.php" );
@@ -74,7 +79,7 @@ $app->get("/map/", function() use ($app) {
 });
 
 // View top
-$app->get("/top/lasthour/", function() use ($app) {
+$app->get("/top/14day/", function() use ($app) {
     include( "view/lasthour.php" );
 });
 $app->get("/ranks/:pageType/:subType/", function($pageType, $subType) use ($app) {

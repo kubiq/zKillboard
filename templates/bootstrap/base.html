@@ -3,15 +3,15 @@
     <head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-{% set description = "zKillboard.com is a killboard for the Massively Multiplayer Online Role Playing Game (MMORPG) EVE-Online." %}
+{% set description = "Dark-Rising is a killboard for the Massively Multiplayer Online Role Playing Game (MMORPG) EVE-Online." %}
         <meta name="description" content="{{ description }}">
-        <meta name="title" content="zKillboard.com / {{ pageTitle }}">
-        <meta name="keywords" content="eve-online, eve, ccp, ccp games, kills, kill, massively, multiplayer, online, role, playing, game, mmorpg, rank, isk, mmorpg, killboard, eve-kill, zkillboard">
+        <meta name="title" content="Dark-Rising / {{ pageTitle }}">
+        <meta name="keywords" content="eve-online, eve, ccp, ccp games, kills, kill, massively, multiplayer, online, role, playing, game, mmorpg, rank, isk, mmorpg, killboard, eve-kill, zkillboard, darkrising, dark-rising">
         <meta name="robots" content="index,follow">
 {% block opengraph %}
         <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="@eve_kill">
-        <meta name="og:title" content="zKillboard.com / {{ pageTitle }}">
+        <meta name="twitter:site" content="@DarkRisingEve">
+        <meta name="og:title" content="Dark-Rising / {{ pageTitle }}">
         <meta name="og:url" content="{{ fullsiteurl }}">
         <meta name="og:description" content="{{ description }}">
 		<meta name="google-site-verification" content="4YdeWaZKjMbr1Fnia-8e2DMgfn4nBT6OVuXqtZc2suA" />
@@ -19,9 +19,9 @@
 {% block robots %}
 {% endblock %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>{% block title %}zKillboard.com{% endblock %}</title>
-		<link rel="canonical" href="https://zkillboard.com{{ requesturi }}">
+
+        <title>{% block title %}Dark-Rising{% endblock %}</title>
+		<link rel="canonical" href="http://dark-rising.co.uk{{ requesturi }}">
         <link rel="search" type="application/opensearchdescription+xml" href="//{{ siteurl }}/xml/zkbsearch.xml" title="zKillboard">
 {% if theme is not defined %}{% set theme = 'cyborg' %}{% endif %}
 		{% if theme == "default" %}
@@ -101,7 +101,7 @@
         <script type="text/javascript" src="//{{ siteurl }}/js/snowstorm.js"></script> <!-- Snowstorm yo! -->
 {% endif %}
         <script type="text/javascript">
-        var disqus_shortname = 'zkillboard';
+        var disqus_shortname = 'darkrising';
         (function () {
             var s = document.createElement('script'); s.async = true;
             s.type = 'text/javascript';

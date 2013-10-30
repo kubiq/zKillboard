@@ -39,15 +39,15 @@ class cli_hourly implements cliCommand
 	{
 		$p = array();
 		$p["limit"] = 5;
-		$p["pastSeconds"] = 3 * 86400;
+		$p["pastSeconds"] = 30 * 86400;
 		$p["kills"] = true;
 
-		Storage::store("Top3dayChars", json_encode(Info::doMakeCommon("Top Characters - Last 3 Days", "characterID", Stats::getTopPilots($p))));
-		Storage::store("Top3dayCorps", json_encode(Info::doMakeCommon("Top Corporations - Last 3 Days", "corporationID", Stats::getTopCorps($p))));
-		Storage::store("Top3dayAlli", json_encode(Info::doMakeCommon("Top Alliances - Last 3 Days", "allianceID", Stats::getTopAllis($p))));
-		Storage::store("TopIsk", json_encode(Stats::getTopIsk(array("pastSeconds" => (3*86400), "limit" => 5))));
-		Storage::store("TopPods", json_encode(Stats::getTopIsk(array("groupID" => 29, "pastSeconds" => (3*86400), "limit" => 5))));
-		Storage::store("TopPoints", json_encode(Stats::getTopPoints("killID", array("losses" => true, "pastSeconds" => (3*86400), "limit" => 5))));
+		Db::execute("analyze table zz_participants");
+
+		Storage::store("Top30dayChars", json_encode(Info::doMakeCommon("Top Characters - Last 30 Days", "characterID", Stats::getTopPilots($p))));
+		Storage::store("TopIsk", json_encode(Stats::getTopIsk(array("pastSeconds" => (30*86400), "corpKillsOnly" => 804504419, "limit" => 5))));
+		Storage::store("TopPods", json_encode(Stats::getTopIsk(array("shipTypeID" => 670, "corpKillsOnly" => 804504419, "pastSeconds" => (30*86400), "limit" => 5))));
+
 		Storage::store("KillCount", Db::queryField("select count(*) count from zz_killmails", "count"));
 		Storage::store("ActualKillCount", Db::queryField("select count(*) count from zz_killmails where processed = 1", "count"));
 
