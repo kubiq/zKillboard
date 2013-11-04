@@ -76,6 +76,7 @@ foreach($cronInfo as $command => $info)
 {
     foreach($info as $interval => $arguments)
     {
+	    Log::log("-> Running $command with interval $interval");
         runCron($command, $interval, $arguments);
     }
 }

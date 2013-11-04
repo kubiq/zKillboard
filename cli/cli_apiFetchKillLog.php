@@ -49,6 +49,7 @@ class cli_apiFetchKillLog implements cliCommand
 		try {
 			do {
 				$pheal = Util::getPheal($keyID, $vCode);
+				Log::log('> Running fetch killlog' . $keyID  . '   ' . $vCode);
 				$charCorp = ($isDirector == "T" ? 'corp' : 'char');
 				$pheal->scope = $charCorp;
 				$result = null;
@@ -90,6 +91,7 @@ class cli_apiFetchKillLog implements cliCommand
 			} while ($aff > 25 || ($beforeKillID > 0 && $maxKillID == 0));
 		} catch (Exception $ex) {
 			$errorCode = $ex->getCode();
+			Log::error($ex->getFile() . ' | ' . $ex->getLine() . ' | ' . $ex->getMessage());
 			Db::execute("update zz_api_characters set cachedUntil = date_add(now(), interval 1 hour), errorCount = errorCount + 1, errorCode = :code where apiRowID = :id", array(":id" => $apiRowID, ":code" => $errorCode));
 			switch($errorCode) {
 				case 119:

@@ -7,3 +7,5 @@ vendor/
 .lighttpd.conf
 cron.overrides
 public/apc-nrp.php
+log/
+!log/.gitignore

@@ -16,6 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+require_once __DIR__ . '/../config.php';
+
 class Log
 {
 
@@ -26,9 +28,16 @@ class Log
 
 	public static function log($text)
 	{
-		global $logfile;
-		if (!file_exists($logfile) && !is_writable(dirname($logfile))) return; // Can't create the file
-		if (is_writable($logfile)) error_log(date("Ymd H:i:s") . " $text \n", 3, $logfile);
+		if (!file_exists(LOG_FILE)) {
+			trigger_error('Log file does not exist "' . LOG_FILE . '"');
+			return;
+		}
+
+		if (!is_writable(dirname(LOG_FILE))) {
+			trigger_error('Log is not writable');
+			return;
+		}
+		error_log(date("Ymd H:i:s") . " $text \n", 3, LOG_FILE);
 	}
 
 	/*
@@ -37,23 +46,22 @@ class Log
 	public static function irc($text, $from = "zkillboard - ")
 	{
 		$text = Log::addIRCColors($text);
-    	$logfile = "/var/killboard/bot/esc.txt";
-		if (!file_exists($logfile) && !is_writable(dirname($logfile))) return; // Can't create the file
-		error_log("\n${from}$text\n", 3, $logfile);
+		if (!file_exists(LOG_FILE_IRC) && !is_writable(dirname(LOG_FILE_IRC))) trigger_error('Cant create logFile: ' . LOG_FILE_IRC); // Can't create the file
+		error_log("\n" . date("Ymd H:i:s") . " ${from}$text\n", 3, LOG_FILE_IRC);
 	}
 
 
 	public static function ircAdmin($text, $from = "zkillboard - ")
 	{
 		$text = Log::addIRCColors($text);
-    	$logfile = "/var/killboard/bot/escadmin.txt";
-		if (!file_exists($logfile) && !is_writable(dirname($logfile))) return; // Can't create the file
-		error_log("\n${from}$text\n", 3, $logfile);
+		if (!file_exists(LOG_FILE_IRC_ADMIN) && !is_writable(dirname(LOG_FILE_IRC_ADMIN))) trigger_error('Cant create logFile: ' . LOG_FILE_IRC_ADMIN); // Can't create the file
+		error_log("\n${from}$text\n", 3, LOG_FILE_IRC_ADMIN);
 	}
 
 	public static function error($text)
 	{
-		error_log(date("Ymd H:i:s") . " $text \n", 3, "/var/log/kb/kb_error.log");
+		if (!file_exists(LOG_FILE_ERROR) && !is_writable(dirname(LOG_FILE_ERROR))) trigger_error('Cant create logFile: ' . LOG_FILE_ERROR);
+		error_log(date("Ymd H:i:s") . " $text \n", 3, LOG_FILE_ERROR);
 	}
 
 	public static $colors = array(
