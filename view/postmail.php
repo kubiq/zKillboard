@@ -16,6 +16,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+global $boardDisablePost;
+
+if($boardDisablePost)
+{
+    $app->render("404.html");
+    return;
+}
+
 $error = "";
 
 if($_POST && !User::isRevoked())
